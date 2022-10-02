@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:DataServices>
+        <Schema Namespace="ShopService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="Booking" EntityType="ShopService.Booking"/>
+            </EntityContainer>
+            <EntityType Name="Booking">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="orderID" Type="Edm.Int32"/>
+                <Property Name="quantity" Type="Edm.Int32"/>
+                <Property Name="price" Type="Edm.Decimal" Scale="2" Precision="15"/>
+                <Property Name="totalPrice" Type="Edm.Decimal" Scale="2" Precision="15"/>
+                <Property Name="supplierPhone" Type="Edm.String"/>
+                <Property Name="totalWeight" Type="Edm.Decimal" Scale="variable"/>
+            </EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

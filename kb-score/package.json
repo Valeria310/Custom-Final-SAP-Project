@@ -1,0 +1,68 @@
+{
+    "name": "kb-score",
+    "version": "1.0.0",
+    "description": "A simple CAP project.",
+    "repository": "<Add your repository here>",
+    "license": "UNLICENSED",
+    "private": true,
+    "dependencies": {
+        "@sap/cds": "^6",
+        "express": "^4",
+        "hdb": "^0.19.0"
+    },
+    "devDependencies": {
+        "@sap/ux-specification": "^1.102.9",
+        "rimraf": "^3.0.2",
+        "sqlite3": "^5.0.4"
+    },
+    "scripts": {
+        "start": "cds run",
+        "watch-ui.product": "cds watch --open ui.product/webapp/index.html?sap-ui-xx-viewCache=false",
+        "undeploy": "cf undeploy kb-score --delete-services --delete-service-keys --delete-service-brokers",
+        "build": "rimraf resources mta_archives && mbt build --mtar archive",
+        "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+        "watch-ui.booking": "cds watch --open ui.booking/webapp/index.html?sap-ui-xx-viewCache=false",
+        "watch-ui.supplier": "cds watch --open ui.supplier/webapp/index.html?sap-ui-xx-viewCache=false"
+    },
+    "engines": {
+        "node": "^16.15"
+    },
+    "eslintConfig": {
+        "extends": "eslint:recommended",
+        "env": {
+            "es2020": true,
+            "node": true,
+            "jest": true,
+            "mocha": true
+        },
+        "globals": {
+            "SELECT": true,
+            "INSERT": true,
+            "UPDATE": true,
+            "DELETE": true,
+            "CREATE": true,
+            "DROP": true,
+            "CDL": true,
+            "CQL": true,
+            "CXL": true,
+            "cds": true
+        },
+        "rules": {
+            "no-console": "off",
+            "require-atomic-updates": "off"
+        }
+    },
+    "cds": {
+        "requires": {
+            "db": {
+                "kind": "hana-cloud"
+            }
+        }
+    },
+    "sapux": [
+        "app/ui.product",
+        "app/ui.booking",
+        "app/ui.supplier",
+        "app/ui.booking"
+    ]
+}

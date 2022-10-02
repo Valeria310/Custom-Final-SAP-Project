@@ -1,0 +1,5 @@
+ID;name;category;weight;price;quantity;CurrencyCode_code;status_ID
+32ca5208-698d-4d7a-1524-003ef21b6347;Lay's with salt;snacks;81;2.05;58;USD;0
+32ca5208-698d-4d7a-1524-003ef21b6348;Lay's with salt;snacks;81;2.25;15;USD;1
+32ca5208-698d-4d7a-1524-003ef21b6555;Lay's with cheese;snacks;81;2.15;49;USD;2
+32ca5208-698d-4d7a-1524-003ef21b6556;Lay's with cheese;snacks;81;2.35;0;USD;3
