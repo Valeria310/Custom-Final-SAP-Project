@@ -7,5 +7,6 @@ using from './ui.product/labels';
 using from './ui.booking/annotations';
 
 using from './ui.supplier/annotations';
-
-using from './ui.booking/annotations';
+using from './ui.supplier/capabilities';
+using from './ui.supplier/field-control';
+using from './ui.supplier/labels';

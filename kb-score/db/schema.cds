@@ -31,8 +31,8 @@ entity Products : managed {
 entity Suppliers : managed {
     key ID: UUID;
     name: String;
-    category: String;
-    weight: Double;
-    price: Decimal(15,2);
-    quantity: Integer;
+    country: String;
+    rating: Double;
+    phonenumber: String;
+    product: Association to many Products on product.supplier = $self;
 }

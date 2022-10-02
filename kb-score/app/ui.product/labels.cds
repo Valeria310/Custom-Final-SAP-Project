@@ -6,9 +6,9 @@ annotate score.Products with @title : '{i18n>productTitle}' {
     category        @title                  : '{i18n>category}';
     weight          @title                  : '{i18n>weight}';
     quantity        @title                  : '{i18n>quantity}';
-    supplier        @title                  : '{i18n>supplierName}';
-                    // @Common.Text            : supplier.name
-                    // @Common.TextArrangement : #TextOnly;
+    supplier        @title                  : '{i18n>supplierName}'
+                    @Common.Text            : supplier.name
+                    @Common.TextArrangement : #TextOnly;
     price           @title                  : '{i18n>price}'
                     @Measures.ISOCurrency   : CurrencyCode_code;
     CurrencyCode    @title                  : '{i18n>Currency}'
