@@ -1,0 +1,5 @@
+ID;name;category;weight;price;quantity;supplier_ID;CurrencyCode_code;status_ID;image
+32ca5208-698d-4d7a-1524-003ef21b6347;Lay's with salt;snacks;81;2.05;58;8cd4b2a3-816c-4da2-951a-4e2097a66d18;USD;0;https://bazar-store.by/images/763927.jpg
+32ca5208-698d-4d7a-1524-003ef21b6348;Lay's with salt;snacks;81;2.25;15;8cd4b2a3-816c-4da2-951a-4e2097a66d19;USD;1;https://bazar-store.by/images/763927.jpg
+32ca5208-698d-4d7a-1524-003ef21b6555;Lay's with cheese;snacks;81;2.15;49;8cd4b2a3-816c-4da2-951a-4e2097a66d18;USD;2;https://icf.listex.info/med/b3163c36-3ad8-0706-7fc7-953e874540a5.jpg
+32ca5208-698d-4d7a-1524-003ef21b6556;Lay's with cheese;snacks;81;2.35;0;8cd4b2a3-816c-4da2-951a-4e2097a66d19;USD;3;https://icf.listex.info/med/b3163c36-3ad8-0706-7fc7-953e874540a5.jpg

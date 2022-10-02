@@ -1,5 +1,8 @@
 
 using from './ui.product/annotations';
+using from './ui.product/capabilities';
+using from './ui.product/field-control';
+using from './ui.product/labels';
 
 using from './ui.booking/annotations';
 
