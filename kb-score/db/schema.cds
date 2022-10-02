@@ -7,11 +7,14 @@ using { sap.common.CodeList, Currency } from './common';
 
 entity Bookings : managed {
     key ID: UUID;
-    name: String;
-    category: String;
-    weight: Double;
-    price: Decimal(15,2);
+    orderID: Integer;
+    product: Association to Products;
+    supplier: Association to Suppliers;
     quantity: Integer;
+    totalPrice: Decimal(15,2);
+    CurrencyCode: Currency; 
+    status: Association to one masterdata.OrderStatuses;
+    totalWeight: Decimal;
 }
 
 entity Products : managed {

@@ -5,6 +5,8 @@ using from './ui.product/field-control';
 using from './ui.product/labels';
 
 using from './ui.booking/annotations';
+using from './ui.booking/capabilities';
+using from './ui.booking/labels';
 
 using from './ui.supplier/annotations';
 using from './ui.supplier/capabilities';

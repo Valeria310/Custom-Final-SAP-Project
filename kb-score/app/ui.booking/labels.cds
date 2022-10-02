@@ -1,15 +1,14 @@
 using {kb.score as score} from '../../db/schema';
 
-annotate score.Products with @title : '{i18n>product}' {
+annotate score.Bookings with @title : '{i18n>booking}' {
     ID              @UI.Hidden;
-    name            @title                  : '{i18n>productName}';
-    category        @title                  : '{i18n>category}';
-    weight          @title                  : '{i18n>weight}';
+    orderID         @title                  : '{i18n>orderID}';
     quantity        @title                  : '{i18n>quantity}';
+    totalWeight     @title                  : '{i18n>totalWeight}';
     supplier        @title                  : '{i18n>supplierName}'
                     @Common.Text            : supplier.name
                     @Common.TextArrangement : #TextOnly;
-    price           @title                  : '{i18n>price}'
+    totalPrice      @title                  : '{i18n>totalPrice}'
                     @Measures.ISOCurrency   : CurrencyCode_code;
     CurrencyCode    @title                  : '{i18n>Currency}'
                     @Common.Text            : CurrencyCode.symbol
@@ -17,5 +16,4 @@ annotate score.Products with @title : '{i18n>product}' {
     status          @title                  : '{i18n>status}'
                     @Common.Text            : status.name
                     @Common.TextArrangement : #TextFirst;
-    image           @title                  : '{i18n>image}';
 }

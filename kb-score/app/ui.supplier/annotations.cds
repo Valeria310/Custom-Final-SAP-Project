@@ -111,7 +111,7 @@ annotate service.Suppliers with @(
             Label  : '{i18n>adminInfo}',
             Facets : [{
                 $Type  : 'UI.ReferenceFacet',
-                Label  : '{i18n>admininfo}',
+                Label  : '{i18n>adminInfo}',
                 Target : '@UI.FieldGroup#AdministrativeData'
             }]
         }
