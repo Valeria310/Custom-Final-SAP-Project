@@ -6,6 +6,25 @@ service ScoreService {
 
     entity Bookings as projection on score.Bookings;
     
+    entity Products as projection on score.Products actions {
+        @Core.OperationAvailable : in.orderProductEnabled
+        action orderProduct(quantity: Integer);
+    };
+    
+    entity Suppliers as projection on score.Suppliers;
+
+    entity OrderStatuses as projection on masterdata.OrderStatuses;
+
+    entity ProductStatuses as projection on masterdata.ProductStatuses;
+
+    entity Currencies as projection on common.Currencies;
+
+}
+
+service TechnicalService @(requires : 'system-user') {
+
+    entity Bookings as projection on score.Bookings;
+    
     entity Products as projection on score.Products;
     
     entity Suppliers as projection on score.Suppliers;

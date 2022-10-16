@@ -6,10 +6,13 @@
     "license": "UNLICENSED",
     "private": true,
     "dependencies": {
+        "@sap-cloud-sdk/http-client": "^2.9.0",
         "@sap/cds": "^6",
         "@sap/hdi-deploy": "^4.4.1",
         "express": "^4",
-        "hdb": "^0.19.0"
+        "hdb": "^0.19.0",
+        "sap-cf-axios": "^0.3.6",
+        "passport": "^0.6.0"
     },
     "devDependencies": {
         "@sap/ux-specification": "^1.102.9",
@@ -57,6 +60,12 @@
         "requires": {
             "db": {
                 "kind": "hana-cloud"
+            },
+            "CPIDestination": {
+                "kind": "rest",
+                "credentials": {
+                    "destination": "CPI_DESTINATION"
+                }
             }
         }
     },

@@ -3,6 +3,7 @@ using {kb.score as score} from '../../db/schema';
 annotate score.Bookings with @title : '{i18n>booking}' {
     ID              @UI.Hidden;
     orderID         @title                  : '{i18n>orderID}';
+    image           @title                  : '{i18n>image}';
     quantity        @title                  : '{i18n>quantity}';
     totalWeight     @title                  : '{i18n>totalWeight}';
     supplier        @title                  : '{i18n>supplierName}'

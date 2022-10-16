@@ -8,6 +8,8 @@ modules:
   path: gen/srv
   requires:
   - name: kb-score-db
+  - name: uaa_kb-score
+  - name: dest_service
   provides:
   - name: srv-api
     properties:
@@ -151,6 +153,11 @@ resources:
     service: xsuaa
     service-name: kb-score-xsuaa-service
     service-plan: application
+- name: dest_service
+  type: org.cloudfoundry.existing-service
+  parameters:
+    service-plan: lite
+    service: destination
 parameters:
   deploy_mode: html5-repo
   enable-parallel-deployments: true

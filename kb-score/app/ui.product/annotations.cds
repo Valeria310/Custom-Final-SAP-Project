@@ -2,6 +2,11 @@ using ScoreService as service from '../../srv/service';
 
 annotate service.Products with @(
     UI : {
+        Identification  : [{
+            $Type: 'UI.DataFieldForAction',
+            Action: 'ScoreService.orderProduct',
+            Label: '{i18n>orderProduct}'
+        }],
         SelectionFields : [category, supplier_ID, status_ID],
         LineItem : [
             {

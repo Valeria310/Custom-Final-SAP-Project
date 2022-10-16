@@ -1,2 +1,2 @@
-ID;orderID;product_ID;supplier_ID;quantity;totalPrice;CurrencyCode_code;totalWeight;status_ID
-8cd4b2a3-816c-4da2-951a-4e2097a65555;3;32ca5208-698d-4d7a-1524-003ef21b6348;8cd4b2a3-816c-4da2-951a-4e2097a66d19;25;56.25;BYN;2025;0
+ID;orderID;product_ID;supplier_ID;quantity;totalPrice;CurrencyCode_code;totalWeight;status_ID;image
+8cd4b2a3-816c-4da2-951a-4e2097a65555;3;32ca5208-698d-4d7a-1524-003ef21b6348;8cd4b2a3-816c-4da2-951a-4e2097a66d19;25;56.25;USD;2025;0;https://bazar-store.by/images/763927.jpg

@@ -6,9 +6,7 @@ annotate ScoreService.Products with {
     weight              @mandatory;
     price               @mandatory;
     quantity            @mandatory;
-    supplier_ID         @mandatory;
     CurrencyCode_code   @mandatory;
     status              @readonly;
     image               @readonly;
-    // image @mandatory;
 };

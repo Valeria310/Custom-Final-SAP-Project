@@ -11,10 +11,11 @@ entity Bookings : managed {
     product: Association to Products;
     supplier: Association to Suppliers;
     quantity: Integer;
-    totalPrice: Decimal(15,2);
+    totalPrice: Decimal;
     CurrencyCode: Currency; 
     status: Association to one masterdata.OrderStatuses;
     totalWeight: Decimal;
+    image: LargeString @Core.IsURL @Core.MediaType: 'image/jpg';
 }
 
 entity Products : managed {
@@ -22,13 +23,13 @@ entity Products : managed {
     name: String;
     category: String;
     weight: Double;
-    price: Decimal(15,2);
+    price: Decimal;
     quantity: Integer;
     supplier: Association to Suppliers;
     CurrencyCode: Currency;
     status: Association to one masterdata.ProductStatuses;
-    image: String;
-    // image: LargeString @Core.IsURL @Core.MediaType: 'image/jpg';
+    image: LargeString @Core.IsURL @Core.MediaType: 'image/jpg';
+    virtual orderProductEnabled: Boolean;
 }
 
 entity Suppliers : managed {

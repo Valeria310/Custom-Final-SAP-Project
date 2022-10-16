@@ -1,0 +1,2 @@
+ID;orderID;quantity;productID;productName;productImage;totalWeight;totalPrice;totalLocalPrice;CurrencyCode_code;LocalCurrencyCode_code;status_ID
+8cd4b2a3-816c-4da2-951a-4e2097a65555;3;15;8cd4b2a3-816c-4da2-951a-4e2097a67777;Lay's with salt;https://bazar-store.by/images/763927.jpg;2025;56.25;125.30;USD;BYN;1

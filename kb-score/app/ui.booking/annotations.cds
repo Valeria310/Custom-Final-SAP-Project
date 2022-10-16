@@ -17,8 +17,7 @@ annotate service.Bookings with @(
             },
             {
                 $Type : 'UI.DataField',
-                Value : product.image,
-                Label : '{i18n>image}',
+                Value : image,
                 ![@UI.Importance] : #High
             },
             {
@@ -81,8 +80,7 @@ annotate service.Bookings with @(
         FieldGroup #Description : {Data : [
             {
                 $Type : 'UI.DataField',
-                Value : product.image,
-                Label : '{i18n>image}'
+                Value : image,
             },
             {
                 $Type : 'UI.DataField',
@@ -109,8 +107,7 @@ annotate service.Bookings with @(
             },
             {
                 $Type : 'UI.DataField',
-                Value : product.image,
-                Label : '{i18n>image}',
+                Value : image,
                 ![@UI.Importance] : #High
             },
             {

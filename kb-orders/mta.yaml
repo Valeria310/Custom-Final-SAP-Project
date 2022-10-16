@@ -1,0 +1,141 @@
+_schema-version: "3.1"
+ID: kb-orders
+description: A simple CAP project.
+version: 1.0.0
+modules:
+- name: kb-orders-srv
+  type: nodejs
+  path: gen/srv
+  requires:
+  - name: kb-orders-db
+  - name: uaa_kb-orders
+  - name: dest_service
+  provides:
+  - name: srv-api
+    properties:
+      srv-url: ${default-url}
+  parameters:
+    buildpack: nodejs_buildpack
+  build-parameters:
+    builder: npm-ci
+- name: kb-orders-db-deployer
+  type: hdb
+  path: gen/db
+  requires:
+  - name: kb-orders-db
+  parameters:
+    buildpack: nodejs_buildpack
+- name: kb-orders-destination-content
+  type: com.sap.application.content
+  requires:
+  - name: kb-orders-destination-service
+    parameters:
+      content-target: true
+  - name: kb-orders_html_repo_host
+    parameters:
+      service-key:
+        name: kb-orders_html_repo_host-key
+  - name: uaa_kb-orders
+    parameters:
+      service-key:
+        name: uaa_kb-orders-key
+  - name: srv-api
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Authentication: OAuth2UserTokenExchange
+          Name: kb-orders-app-srv
+          TokenServiceInstanceName: kb-orders-xsuaa-service
+          TokenServiceKeyName: uaa_kb-orders-key
+          URL: ~{srv-api/srv-url}
+          sap.cloud.service: kbordersservice
+        - Name: kbordersservice_kb_orders_html_repo_host
+          ServiceInstanceName: kb-orders-html5-app-host-service
+          ServiceKeyName: kb-orders_html_repo_host-key
+          sap.cloud.service: kbordersservice
+        - Authentication: OAuth2UserTokenExchange
+          Name: kbordersservice_uaa_kb_orders
+          ServiceInstanceName: kb-orders-xsuaa-service
+          ServiceKeyName: uaa_kb-orders-key
+          sap.cloud.service: kbordersservice
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+- name: kb-orders-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: kb-orders_html_repo_host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - kbuiorders.zip
+      name: kbuiorders
+      target-path: resources/
+- name: kbuiorders
+  type: html5
+  path: app/ui.orders
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+- name: kb-orders-db
+  type: com.sap.xs.hdi-container
+  parameters:
+    service: hana
+    service-plan: hdi-shared
+  properties:
+    hdi-service-name: ${service-name}
+- name: kb-orders-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: kb-orders-destination-service
+    service-plan: lite
+- name: kb-orders_html_repo_host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: kb-orders-html5-app-host-service
+    service-plan: app-host
+- name: uaa_kb-orders
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: kb-orders-xsuaa-service
+    service-plan: application
+- name: dest_service
+  type: org.cloudfoundry.existing-service
+  parameters:
+    service-plan: lite
+    service: destination
+parameters:
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+  - builder: custom
+    commands:
+    - npm ci
+    - npx -p @sap/cds-dk cds build --production
