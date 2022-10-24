@@ -114,6 +114,12 @@ annotate service.Suppliers with @(
                 Label  : '{i18n>adminInfo}',
                 Target : '@UI.FieldGroup#AdministrativeData'
             }]
+        },
+                {
+            $Type  : 'UI.ReferenceFacet',
+            Label  : '{i18n>supplierProducts}',
+            Target : 'product/@UI.LineItem'
         }
+
     ]
 );

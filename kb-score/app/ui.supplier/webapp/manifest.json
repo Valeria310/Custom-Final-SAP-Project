@@ -46,7 +46,12 @@
                     "action": "manage",
                     "title": "{{flpTitle}}",
                     "subTitle": "{{flpSubtitle}}",
-                    "icon": ""
+                    "icon": "sap-icon://factory",
+                    "indicatorDataSource": {
+                        "dataSource": "mainService",
+                        "path": "/dynamic_dest/kb-score-app-srv/score/Suppliers/$count",
+                        "refresh": 10
+                    }
                 }
             }
         }

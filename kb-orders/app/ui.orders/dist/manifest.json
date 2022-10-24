@@ -46,7 +46,12 @@
                     "action": "manage",
                     "title": "{{flpTitle}}",
                     "subTitle": "{{flpSubtitle}}",
-                    "icon": ""
+                    "icon": "sap-icon://order-status",
+                    "indicatorDataSource": {
+                        "dataSource": "mainService",
+                        "path": "/dynamic_dest/kb-orders-app-srv/orders/ProductOrders/$count",
+                        "refresh": 10
+                    }
                 }
             }
         }

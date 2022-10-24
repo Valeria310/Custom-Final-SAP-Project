@@ -46,7 +46,12 @@
                     "action": "manage",
                     "title": "{{flpTitle}}",
                     "subTitle": "{{flpSubtitle}}",
-                    "icon": ""
+                    "icon": "sap-icon://product",
+                    "indicatorDataSource": {
+                        "dataSource": "mainService",
+                        "path": "/dynamic_dest/kb-score-app-srv/score/Products/$count",
+                        "refresh": 10
+                    }
                 }
             }
         }
