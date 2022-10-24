@@ -17,9 +17,17 @@ module.exports = cds.service.impl(async function() {
         if(each.status_ID == 2) { 
             each.sendOrderEnabled = true;
         }
+        if(each.status_ID == 3) { 
+            each.deleteOrderEnabled = true;
+        }
     })
 
     this.on('approveOrder', 'ProductOrders', wf.approveOrder);
     this.on('sendOrder', 'ProductOrders', cpi.sendOrder);
+    
+    this.on('deleteOrder', 'ProductOrders', async(req) => {
+        const orderID = req.params[0];
+        await DELETE.from(ProductOrders).where({ ID: orderID });
+    })
 
 })

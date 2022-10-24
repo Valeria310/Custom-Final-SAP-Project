@@ -2,9 +2,9 @@ using {OrdersService} from '../../srv/service';
 
 annotate OrdersService.ProductOrders with @(
     Capabilities                    : {
-        Deletable  : true,
-        Insertable : true,
-        Updatable  : true
+        Deletable  : false,
+        Insertable : false,
+        Updatable  : false
     },
     Capabilities.FilterRestrictions : {FilterExpressionRestrictions : [{
         Property           : 'orderID',

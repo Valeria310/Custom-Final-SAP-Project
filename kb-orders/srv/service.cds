@@ -7,6 +7,8 @@ service OrdersService {
         action approveOrder();
         @Core.OperationAvailable : in.sendOrderEnabled
         action sendOrder();
+        @Core.OperationAvailable : in.deleteOrderEnabled
+        action deleteOrder();
     };
     entity Statuses as projection on order.Statuses;
 }

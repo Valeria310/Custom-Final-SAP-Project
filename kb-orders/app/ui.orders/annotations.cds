@@ -12,6 +12,11 @@ annotate service.ProductOrders with @(
                 $Type  : 'UI.DataFieldForAction',
                 Action : 'OrdersService.sendOrder',
                 Label  : '{i18n>sendOrder}'
+            },
+            {
+                $Type  : 'UI.DataFieldForAction',
+                Action : 'OrdersService.deleteOrder',
+                Label  : '{i18n>deleteOrder}'
             }
         ],
         SelectionFields     : [status_ID],
