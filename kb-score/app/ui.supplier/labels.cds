@@ -5,5 +5,5 @@ annotate score.Suppliers with @title : '{i18n>supplier}' {
     name            @title                  : '{i18n>supplierName}';
     country         @title                  : '{i18n>country}';
     rating          @title                  : '{i18n>rating}';
-    phonenumber     @title                  : '{i18n>phonenumber}';
+    phoneNumber     @title                  : '{i18n>phonenumber}';
 }

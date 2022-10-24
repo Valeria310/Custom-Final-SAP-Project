@@ -21,7 +21,7 @@ annotate service.Suppliers with @(
             },
             {
                 $Type : 'UI.DataField',
-                Value : phonenumber,
+                Value : phoneNumber,
                 ![@UI.Importance] : #High
             }
         ],
@@ -72,7 +72,7 @@ annotate service.Suppliers with @(
             },
             {
                 $Type : 'UI.DataField',
-                Value : phonenumber
+                Value : phoneNumber
             }
         ]},
         FieldGroup #AdministrativeData : {Data : [
