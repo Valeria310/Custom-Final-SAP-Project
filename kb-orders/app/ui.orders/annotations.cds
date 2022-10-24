@@ -133,7 +133,9 @@ annotate service.ProductOrders with @(
                 $Type             : 'UI.DataField',
                 Value             : totalWeight,
                 ![@UI.Importance] : #High
-            },
+            }
+        ]},
+        FieldGroup #PriceInfo            : {Data : [
             {
                 $Type             : 'UI.DataField',
                 Value             : totalPrice,
@@ -183,6 +185,10 @@ annotate service.ProductOrders with @(
                 $Type  : 'UI.ReferenceFacet',
                 Label  : '{i18n>generalInfo}',
                 Target : '@UI.FieldGroup#Details'
+            },{
+                $Type  : 'UI.ReferenceFacet',
+                Label  : '{i18n>priceInfo}',
+                Target : '@UI.FieldGroup#PriceInfo'
             }]
         },
         {
