@@ -156,8 +156,8 @@ resources:
 - name: dest_service
   type: org.cloudfoundry.existing-service
   parameters:
-    service-plan: lite
     service: destination
+    service-plan: lite
 parameters:
   deploy_mode: html5-repo
   enable-parallel-deployments: true

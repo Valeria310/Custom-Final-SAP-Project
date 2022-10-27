@@ -7,22 +7,21 @@ module.exports = {
 
 const { Products } = cds.entities('kb.score')
 
-async function orderProduct(req) {
+async function orderProduct(req, ID) {
     try {
-        const { ID } = req.params[0];
         const quantity = req.data.quantity;
-        const orderInfo = await SELECT.from(Products).where({ ID: ID });
+        const productInfo = await SELECT.from(Products).where({ ID: ID });
         if (quantity > 0) {
             const payload = JSON.stringify({
                 "productID": ID,
                 "quantity": quantity,
-                "productName": orderInfo[0].name,
+                "productName": productInfo[0].name,
                 "quantity": quantity,
-                "totalPrice": orderInfo[0].price*quantity,
-                "CurrencyCode_code": orderInfo[0].CurrencyCode_code,
-                "totalWeight": orderInfo[0].weight*quantity,
+                "totalPrice": productInfo[0].price*quantity,
+                "CurrencyCode_code": productInfo[0].CurrencyCode_code,
+                "totalWeight": productInfo[0].weight*quantity,
                 "status_ID": constants.defaultValues.newOrderStatus,
-                "image": orderInfo[0].image
+                "image": productInfo[0].image
             });
             const cpi = await cds.connect.to('CPIDestination');
             await cpi.tx(req).post('/http/order', payload);

@@ -3,9 +3,10 @@ sap.ui.require(
         'sap/fe/test/JourneyRunner',
         'kb/ui/supplier/test/integration/FirstJourney',
 		'kb/ui/supplier/test/integration/pages/SuppliersList',
-		'kb/ui/supplier/test/integration/pages/SuppliersObjectPage'
+		'kb/ui/supplier/test/integration/pages/SuppliersObjectPage',
+		'kb/ui/supplier/test/integration/pages/ProductsObjectPage'
     ],
-    function(JourneyRunner, opaJourney, SuppliersList, SuppliersObjectPage) {
+    function(JourneyRunner, opaJourney, SuppliersList, SuppliersObjectPage, ProductsObjectPage) {
         'use strict';
         var JourneyRunner = new JourneyRunner({
             // start index.html in web folder
@@ -17,7 +18,8 @@ sap.ui.require(
             {
                 pages: { 
 					onTheSuppliersList: SuppliersList,
-					onTheSuppliersObjectPage: SuppliersObjectPage
+					onTheSuppliersObjectPage: SuppliersObjectPage,
+					onTheProductsObjectPage: ProductsObjectPage
                 }
             },
             opaJourney.run

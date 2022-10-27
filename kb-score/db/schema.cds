@@ -38,5 +38,5 @@ entity Suppliers : managed {
     country: String;
     rating: Double;
     phoneNumber: String;
-    product: Association to many Products on product.supplier = $self;
+    product: Composition of many Products on product.supplier = $self;
 }

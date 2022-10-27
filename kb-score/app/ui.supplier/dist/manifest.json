@@ -12,8 +12,8 @@
         "resources": "resources.json",
         "sourceTemplate": {
             "id": "@sap/generator-fiori:lrop",
-            "version": "1.7.5",
-            "toolsId": "5decac0c-192e-4469-9e3e-5580f5d95f19"
+            "version": "1.7.6",
+            "toolsId": "6dd6c2f5-3294-45c7-b605-dfd7cada1b6e"
         },
         "dataSources": {
             "mainService": {
@@ -124,6 +124,11 @@
                     "pattern": "Suppliers({key}):?query:",
                     "name": "SuppliersObjectPage",
                     "target": "SuppliersObjectPage"
+                },
+                {
+                    "pattern": "Suppliers({key})/product({key2}):?query:",
+                    "name": "ProductsObjectPage",
+                    "target": "ProductsObjectPage"
                 }
             ],
             "targets": {
@@ -152,7 +157,25 @@
                     "options": {
                         "settings": {
                             "editableHeaderContent": false,
-                            "entitySet": "Suppliers"
+                            "entitySet": "Suppliers",
+                            "navigation": {
+                                "product": {
+                                    "detail": {
+                                        "route": "ProductsObjectPage"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "ProductsObjectPage": {
+                    "type": "Component",
+                    "id": "ProductsObjectPage",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings": {
+                            "editableHeaderContent": false,
+                            "entitySet": "Products"
                         }
                     }
                 }

@@ -1,9 +1,9 @@
 ## Application Details
 |               |
 | ------------- |
-|**Generation Date and Time**<br>Sat Oct 01 2022 21:22:17 GMT+0000 (Coordinated Universal Time)|
+|**Generation Date and Time**<br>Wed Oct 26 2022 10:41:59 GMT+0000 (Coordinated Universal Time)|
 |**App Generator**<br>@sap/generator-fiori-elements|
-|**App Generator Version**<br>1.7.5|
+|**App Generator Version**<br>1.7.6|
 |**Generation Platform**<br>SAP Business Application Studio|
 |**Floorplan Used**<br>List Report Object Page V4|
 |**Service Type**<br>Local Cap|
@@ -17,10 +17,11 @@
 |**Enable TypeScript**<br>False|
 |**Add Eslint configuration**<br>False|
 |**Main Entity**<br>Suppliers|
+|**Navigation Entity**<br>product|
 
 ## ui.supplier
 
-Suppliers
+A Fiori application.
 
 ### Starting the generated app
 

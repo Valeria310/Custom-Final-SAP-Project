@@ -3,6 +3,7 @@ const constants = require('./constants');
 const cpi = require('./cpi');
 
 module.exports = cds.service.impl(async function () {
+    let currentProduct;
 
     let { Products, Bookings } = this.entities;
 
@@ -28,15 +29,33 @@ module.exports = cds.service.impl(async function () {
         req.data.status_ID = constants.defaultValues.productStatusNotAvailable;
     })
 
-    this.before('CREATE', 'Products', async (req) => {
-        const product = req.data;
-        if (product.weight <= 0) return req.error(400, constants.genericErrors.wrongWeight);
-        if (product.price <= 0) return req.error(400, constants.genericErrors.wrongPrice);
-        if (product.quantity < 0) return req.error(400, constants.genericErrors.wrongQuantity);
+    this.before('READ', 'Products', async (req) => {
+        if (req.path.includes('/product')) {
+            currentProduct = req.data.ID
+        }
+    })
+
+    this.before('UPDATE', 'Suppliers', async (req) => {
+        try {
+            req.data.product.forEach(product => {
+                if (product.weight <= 0) return req.error(400, constants.genericErrors.wrongWeight);
+                if (product.price <= 0) return req.error(400, constants.genericErrors.wrongPrice);
+                if (product.quantity < 0) return req.error(400, constants.genericErrors.wrongQuantity);
+                if (product.quantity === 0) {
+                    product.status_ID = constants.defaultValues.productStatusNotAvailable;
+                } else if (product.quantity < 50) {
+                    product.status_ID = constants.defaultValues.productStatusSmallAmount;
+                } else {
+                    product.status_ID = constants.defaultValues.productStatusAnouth;
+                }
+            })
+        } catch (error) {
+            console.error(error)
+        }
     })
 
     this.on('orderProduct', 'Products', async (req) => {
-        const product_ID = req.params[0].ID;
+        const product_ID = req.path.includes('/product')?currentProduct:req.params[0].ID;
         const quantity = req.data.quantity;
         const { maxID } = await SELECT.one`max(orderID) as maxID`.from(Bookings);
         const product = await SELECT.from(Products).where({ ID: product_ID });
@@ -50,7 +69,7 @@ module.exports = cds.service.impl(async function () {
         if (quantity <= 0) {
             req.error(400, constants.genericErrors.quantityNotAplicable)
         } else {
-            cpi.orderProduct(req);
+            cpi.orderProduct(req, product_ID);
             return INSERT({ orderID: maxID + 1, product_ID: product_ID, status_ID: 0, supplier_ID: supplier_ID, quantity: quantity, CurrencyCode_code: CurrencyCode_code, totalPrice: totalPrice, totalWeight: totalWeight, image: image }).into(Bookings);
         }
     })

@@ -11,11 +11,11 @@
         "@sap/hdi-deploy": "^4.4.1",
         "express": "^4",
         "hdb": "^0.19.0",
-        "sap-cf-axios": "^0.3.6",
-        "passport": "^0.6.0"
+        "passport": "^0.6.0",
+        "sap-cf-axios": "^0.3.6"
     },
     "devDependencies": {
-        "@sap/ux-specification": "^1.102.9",
+        "@sap/ux-specification": "^1.102.10",
         "rimraf": "^3.0.2",
         "sqlite3": "^5.0.4"
     },
@@ -73,6 +73,8 @@
         "app/ui.product",
         "app/ui.booking",
         "app/ui.supplier",
-        "app/ui.booking"
+        "app/ui.booking",
+        "app/ui.supplier",
+        "app/ui.product"
     ]
 }
