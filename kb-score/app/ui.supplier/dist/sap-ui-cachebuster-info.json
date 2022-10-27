@@ -1,9 +1,9 @@
 {
-  "index.html": 1666780920014,
-  "Component.js": 1666780920010,
-  "manifest.json": 1666864912794,
-  "Component-preload.js": 1666864913079,
   "Component-dbg.js": 1666780920010,
+  "Component.js": 1666780920010,
+  "manifest.json": 1666866762216,
+  "Component-preload.js": 1666866762756,
+  "i18n/i18n.properties": 1666780969034,
   "annotations/annotation.xml": 1666780920018,
-  "i18n/i18n.properties": 1666780969034
+  "index.html": 1666780920014
 }

@@ -15,13 +15,6 @@ module.exports = cds.service.impl(async function () {
             req.data.quantity = quantity + currentProduct[0].quantity;
             await UPDATE(Bookings, { product_ID: ID }).with({ status_ID: 1 });
         };
-        if (req.data.quantity === 0) {
-            req.data.status_ID = constants.defaultValues.productStatusNotAvailable;
-        } else if (req.data.quantity < 50) {
-            req.data.status_ID = constants.defaultValues.productStatusSmallAmount;
-        } else {
-            req.data.status_ID = constants.defaultValues.productStatusAnouth;
-        }
     })
 
     this.before('NEW', 'Products', async (req) => {
@@ -55,7 +48,7 @@ module.exports = cds.service.impl(async function () {
     })
 
     this.on('orderProduct', 'Products', async (req) => {
-        const product_ID = req.path.includes('/product')?currentProduct:req.params[0].ID;
+        const product_ID = currentProduct
         const quantity = req.data.quantity;
         const { maxID } = await SELECT.one`max(orderID) as maxID`.from(Bookings);
         const product = await SELECT.from(Products).where({ ID: product_ID });

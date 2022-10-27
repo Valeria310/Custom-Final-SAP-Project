@@ -40,7 +40,7 @@ async function approveOrder(req) {
             )
             return UPDATE(ProductOrders, ID).with({ status_ID: 5 })
         }
-        else if(status_ID == 5) {
+        else if (status_ID == 5) {
             req.error(400, constants.processingOrder)
         }
     }
