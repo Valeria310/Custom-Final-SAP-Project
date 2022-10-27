@@ -30,16 +30,19 @@ module.exports = cds.service.impl(async function () {
 
     this.before('UPDATE', 'Suppliers', async (req) => {
         try {
-            req.data.product.forEach(product => {
+            await req.data.product.forEach(async (product) => {
                 if (product.weight <= 0) return req.error(400, constants.genericErrors.wrongWeight);
                 if (product.price <= 0) return req.error(400, constants.genericErrors.wrongPrice);
                 if (product.quantity < 0) return req.error(400, constants.genericErrors.wrongQuantity);
-                if (product.quantity === 0) {
-                    product.status_ID = constants.defaultValues.productStatusNotAvailable;
+                const openBookings = await SELECT.from(Bookings).where({ product_ID: product.ID, status_ID: 0 });
+                if (openBookings.length !== 0) {
+                    await UPDATE(Products, { ID: product.ID }).with({ status_ID: constants.defaultValues.productStatusRequested });
+                } else if (product.quantity === 0) {
+                    await UPDATE(Products, { ID: product.ID }).with({ status_ID: constants.defaultValues.productStatusNotAvailable });
                 } else if (product.quantity < 50) {
-                    product.status_ID = constants.defaultValues.productStatusSmallAmount;
+                    await UPDATE(Products, { ID: product.ID }).with({ status_ID: constants.defaultValues.productStatusSmallAmount });
                 } else {
-                    product.status_ID = constants.defaultValues.productStatusAnouth;
+                    await UPDATE(Products, { ID: product.ID }).with({ status_ID: constants.defaultValues.productStatusAnouth });
                 }
             })
         } catch (error) {

@@ -7,9 +7,10 @@ module.exports = Object.freeze({
     },
     defaultValues: {
         newProductIcon: 'https://banner2.cleanpng.com/20191002/gja/transparent-marketing-growth-icon-product-icon-5d94d667a81570.8357570715700353036885.jpg',
-        productStatusNotAvailable: 3,
         productStatusAnouth: 0,
+        productStatusRequested: 1,
         productStatusSmallAmount: 2,
+        productStatusNotAvailable: 3,
         newOrderStatus: 1
     }
 })

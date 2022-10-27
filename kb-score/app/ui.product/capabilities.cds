@@ -3,7 +3,7 @@ using {ScoreService} from '../../srv/service';
 annotate ScoreService.Products with @(
     Capabilities                    : {
         Deletable  : true,
-        Insertable : false,
+        Insertable : true,
     },
     Capabilities.FilterRestrictions : {FilterExpressionRestrictions : [{
         Property           : 'name',
